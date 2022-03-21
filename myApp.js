@@ -23,6 +23,12 @@ const personSchema = new Schema({
 const Person = model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
+  const person = new Person({
+    name: 'Bob',
+    age: 45,
+    favoriteFoods: ['pizza', 'spaghetti']
+  });
+  person.save(() => console.log('document saved'));
   done(null /*, data*/);
 };
 
