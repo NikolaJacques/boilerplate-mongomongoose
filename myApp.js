@@ -1,11 +1,12 @@
 const express = require('express'); 
 const app = express();
-const bodyParser = require('body-parser');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-// console.log(process.env.MONGO_URI);
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
+  .then(() => console.log('Connection successful'))
+  .catch(error => console.log(error));
 
 const absolutePath = __dirname + '/views/index.html';
 app.get('/', (req,res) => {
