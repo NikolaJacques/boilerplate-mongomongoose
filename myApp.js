@@ -4,9 +4,9 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-/*   .then(() => console.log('Connection successful'))
-  .catch(error => console.log(error)); */
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connection successful'))
+  .catch(error => console.log(error));
 
 const absolutePath = __dirname + '/views/index.html';
 app.get('/', (req,res) => {
