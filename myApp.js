@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
+const {Schema, model} = mongoose;
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -10,7 +11,16 @@ app.get('/', (req,res) => {
     res.sendFile(absolutePath);
 });
 
-let Person;
+const personSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  age: Number,
+  favoriteFoods: [String]
+});
+
+const Person = model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
