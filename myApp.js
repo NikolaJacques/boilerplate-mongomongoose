@@ -59,9 +59,7 @@ const createManyPeople = (arrayOfPeople, done) => {
   });
 };
 
-const personName = {"name": "Liz"};
-
-const findPeopleByName = (personName, done) => {
+const findPeopleByName = (personName={name:'Liz'}, done) => {
   Person.find(personName, (err, matches) => {
     if (err) return done(err);
     done(null , matches);
