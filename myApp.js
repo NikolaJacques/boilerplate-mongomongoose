@@ -85,13 +85,11 @@ const findEditThenSave = (personId, done) => {
   Person
     .findByById(personId, (err, person) => {
       if (err) return done(err);
-      done(null, person)
-      .then(person => {
-        person.favoriteFoods.push(foodToAdd);
-        person.save((err, data) => {
+      person.favoriteFoods.push(foodToAdd);
+      person.save((err, data) => {
           if (err) return done(err);
           done(null, data);
-        })});
+      });
     });
 };
 
